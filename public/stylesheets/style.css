@@ -1,8 +1,109 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+    --highlight: #789ae0;
+    --duller: #6578a0;
+    --page-background: #333;
+    --content-background: #404040;
+    --font-color: #cecece;
 }
 
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    font: 14px Helvetica;
+    color: var(--font-color);
+    background-color: var(--page-background);
+    display: grid;
+    grid-template-rows: 150px 1fr;
+}
+
+/*--------------------------------*/
+/*            layout              */
+/*--------------------------------*/
+
+#header {
+    display: grid;
+    grid-row: 1;
+    padding: 20px;
+}
+
+#main {
+    display: grid;
+    grid-row: 2;
+    grid-template-columns: 150px 1fr;
+}
+
+#sidebar {
+    grid-column: 1;
+    padding-top: 10px;
+}
+
+#content {
+    padding: 25px;
+    grid-column: 2;
+    background-color: var(--content-background);
+    border: solid 1px var(--duller);
+    max-width: 50%;
+    min-width: 460px;
+}
+
+/*--------------------------------*/
+/*            general             */
+/*--------------------------------*/
+
 a {
-  color: #00B7FF;
+    color: gray;
+    text-decoration: none;
+}
+
+a:hover{
+    color: var(--highlight);
+}
+
+.nav-a {
+    height: 1px;
+    line-height: 0;
+    margin-bottom: 30px;
+    margin-right: 20px;
+    transition: border-width 0.3s linear;
+    display: block;
+    text-align: right;
+}
+
+.highlight-text {
+    color: var(--highlight);
+}
+
+/*--------------------------------*/
+/*           specific             */
+/*--------------------------------*/
+
+#title {
+    align-self: center;
+    font-size: 40pt;
+    font-weight: 100;
+    letter-spacing: 2px;
+    margin-left: 130px;
+    min-width: 520px;
+}
+
+.circle {
+    border-radius: 500px;
+    border: solid 1px var(--highlight);
+    position: absolute;
+    opacity: 0.5;
+}
+
+#circle1 {
+    height: 1000px;
+    width: 1000px;
+    bottom: -500px;
+    right: -300px;
+}
+
+#circle2 {
+    height: 400px;
+    width: 400px;
+    bottom: 200px;
+    right: -300px;
 }
