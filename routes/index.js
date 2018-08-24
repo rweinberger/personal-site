@@ -10,8 +10,12 @@ router.get('/projects', function(req, res, next) {
   res.render("projects");
 });
 
-router.get('/contact', function(req, res, next) {
-  res.render("contact");
+router.get('/connect', function(req, res, next) {
+  res.render("connect");
+});
+
+router.get('/resume', function(req, res, next) {
+  res.render("resume");
 });
 
 module.exports = router;

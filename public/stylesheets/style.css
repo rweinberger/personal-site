@@ -1,20 +1,32 @@
 :root {
-    --highlight: #789ae0;
-    --duller: #6578a0;
-    --page-background: #333;
-    --content-background: #404040;
-    --font-color: #cecece;
+    --page-background: #2f2f2f;
+    --content-background: #3e3e3e;
+    --sidebar-size: 200px;
+    --title-font: custom;
+    --body-font: custom;
+    --link-color: #dead51;
+    --link-hover-color: #fbd692;
+    --body-font-size: 13pt;
+    --project-description-font-size: 11pt;
+}
+
+@font-face {
+    font-family: custom;
+    src: url(/fonts/IBMPlexMono-Thin.ttf);
 }
 
 html, body {
-    width: 100%;
-    height: 100%;
+    -webkit-text-size-adjust: 100%;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
     margin: 0;
-    font: 14px Helvetica;
+    font: var(--body-font-size) var(--body-font);
     color: var(--font-color);
     background-color: var(--page-background);
     display: grid;
-    grid-template-rows: 150px 1fr;
+    grid-template-rows: var(--sidebar-size) 1fr;
+    grid-template-columns: var(--sidebar-size) 1fr;
 }
 
 /*--------------------------------*/
@@ -24,13 +36,14 @@ html, body {
 #header {
     display: grid;
     grid-row: 1;
-    padding: 20px;
+    grid-column: 2;
 }
 
 #main {
+    width: 100vw;
     display: grid;
     grid-row: 2;
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: var(--sidebar-size) 1fr;
 }
 
 #sidebar {
@@ -42,9 +55,12 @@ html, body {
     padding: 25px;
     grid-column: 2;
     background-color: var(--content-background);
-    border: solid 1px var(--duller);
-    max-width: 50%;
-    min-width: 460px;
+    max-width: 70%;
+    min-width: 600px;
+    height: fit-content;
+    min-height: 90px;
+    max-height: 55vh;
+    overflow-y: scroll;
 }
 
 /*--------------------------------*/
@@ -52,15 +68,29 @@ html, body {
 /*--------------------------------*/
 
 a {
-    color: gray;
+    color: var(--link-color);
     text-decoration: none;
+    font-family: var(--body-font)
 }
 
 a:hover{
-    color: var(--highlight);
+    color: var(--link-hover-color);
+}
+
+h2 {
+    margin: 0;
+    border-bottom: solid 1px var(--duller);
+    width: fit-content;
+    padding-bottom: 5px;
+    letter-spacing: 2px;
+}
+
+li {
+    margin: 10px;
 }
 
 .nav-a {
+    color: gray;
     height: 1px;
     line-height: 0;
     margin-bottom: 30px;
@@ -70,26 +100,56 @@ a:hover{
     text-align: right;
 }
 
+.nav-a:hover {
+    color: var(--link-color);
+}
+
 .highlight-text {
     color: var(--highlight);
 }
 
+hr {
+    border: 0;
+    height: 0;
+    border-top: 1px solid #4e4e4e;
+}
+
 /*--------------------------------*/
-/*           specific             */
+/*           scrollbar            */
+/*--------------------------------*/
+
+::-webkit-scrollbar{
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--content-background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: #5f5f5f;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    cursor: pointer;
+    background: gray;
+}
+
+/*--------------------------------*/
+/*        specific elements       */
 /*--------------------------------*/
 
 #title {
     align-self: center;
-    font-size: 40pt;
-    font-weight: 100;
+    font: 40pt var(--title-font);
     letter-spacing: 2px;
-    margin-left: 130px;
-    min-width: 520px;
+    min-width: 650px;
 }
 
 .circle {
     border-radius: 500px;
-    border: solid 1px var(--highlight);
+    /*border: solid 1px var(--duller);*/
+    background: radial-gradient(circle at 50%, #333, #333 50%, var(--highlight) 75%, #333 75%);
     position: absolute;
     opacity: 0.5;
 }
@@ -106,4 +166,14 @@ a:hover{
     width: 400px;
     bottom: 200px;
     right: -300px;
+}
+
+.project-toggled-content {
+    font-size: var(--project-description-font-size);
+    display: none;
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: var(--page-background);
+    max-width: 92%;
 }
