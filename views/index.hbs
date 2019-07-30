@@ -1,4 +1,9 @@
-<span>
-    Hello and welcome!<br><br>
-    I'm a senior at MIT majoring in computer science and minoring in music.
-</span>
+{{#each directories}}
+    {{> directory}}
+{{/each}}
+{{#each files}}
+    {{> file}}
+{{/each}}
+{{#each modals}}
+    {{> modal}}
+{{/each}}

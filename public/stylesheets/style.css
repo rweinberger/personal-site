@@ -1,13 +1,17 @@
 :root {
-    --page-background: #2f2f2f;
-    --content-background: #3e3e3e;
-    --sidebar-size: 200px;
-    --title-font: custom;
-    --body-font: custom;
-    --link-color: #dead51;
-    --link-hover-color: #fbd692;
+    --icon-size: 100px;
+    --font-color: rgb(66, 66, 66);
+    --page-background: #fff;
+    --content-background: #ffffff;
+    --sidebar-size: 150px;
+    --title-font: Helvetica;
+    --body-font: Helvetica;
+    --link-color: #ffa900;
+    --link-hover-color: #afc8fb;
     --body-font-size: 13pt;
     --project-description-font-size: 11pt;
+    --outline-color: #afc8fb;
+    --monitor-color: #fff;
 }
 
 @font-face {
@@ -26,7 +30,44 @@ html, body {
     background-color: var(--page-background);
     display: grid;
     grid-template-rows: var(--sidebar-size) 1fr;
-    grid-template-columns: var(--sidebar-size) 1fr;
+    /* grid-template-columns: var(--sidebar-size) 1fr; */
+}
+
+/*--------------------------------*/
+/*        files/folders           */
+/*--------------------------------*/
+.fs-entity {
+    display: inline-block;
+    margin: 15px;
+    z-index: 1;
+}
+
+.fs-entity:hover {
+    cursor: default;
+}
+
+.dir, .file {
+    text-align: center;
+    width: fit-content;
+}
+
+.file-icon, .dir-icon {
+    height: var(--icon-size);
+}
+
+.icon-label {
+    display: block;
+    padding: 7px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    border-radius: 10px;
+    width: fit-content;
+    margin: auto;
+}
+
+.icon-label-selected {
+    color: white;
+    background-color: var(--outline-color);
 }
 
 /*--------------------------------*/
@@ -34,16 +75,15 @@ html, body {
 /*--------------------------------*/
 
 #header {
-    display: grid;
+    text-align: center;
+    align-self: end;
     grid-row: 1;
-    grid-column: 2;
 }
 
 #main {
+    text-align: center;
     width: 100vw;
-    display: grid;
     grid-row: 2;
-    grid-template-columns: var(--sidebar-size) 1fr;
 }
 
 #sidebar {
@@ -51,16 +91,42 @@ html, body {
     padding-top: 10px;
 }
 
+#vertical-stand, #horizontal-stand, #content {
+    border-radius: 15px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    background-color: var(--monitor-color);
+}
+
 #content {
-    padding: 25px;
     grid-column: 2;
     background-color: var(--content-background);
-    max-width: 70%;
-    min-width: 600px;
-    height: fit-content;
-    min-height: 90px;
-    max-height: 55vh;
-    overflow-y: scroll;
+    /* background-image: url("/images/wallpaper.png"); */
+    background-size: cover;
+    border: solid 10px var(--monitor-color);
+    /* text-align: left; */
+    bottom: 130px;
+    width: 60vw;
+    height: 60vh;
+}
+
+#vertical-stand {
+    border-radius: 0;
+    bottom: 30px;
+    width: 30px;
+    height: 100px;
+}
+
+#horizontal-stand {
+    width: 200px;
+    height: 30px;
+}
+
+#filepath {
+    font-size: 40pt;
 }
 
 /*--------------------------------*/
