@@ -1,9 +1,5 @@
-var fontColor = "#d6d6d6";
-var highlight = "#dead51";
-var duller = "#3e3e3e";
-
 $( document ).ready(function() {
-    setColorVars();
+    // setColorVars();
     selectActivePage();
 });
 
@@ -27,7 +23,8 @@ function selectActivePage() {
             break;
     };
 
-    $(title).css({'color': fontColor, 'border-right': "solid 40px " + duller, 'padding-right': "5px", "margin-right": "0"});
+    // $(title).addClass("nav-a-active");
+    $(title).css({'background-color': "var(--highlight)", 'color': "white"});
 }
 
 function setColorVars() {
